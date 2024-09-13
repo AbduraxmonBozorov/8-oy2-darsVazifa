@@ -159,14 +159,78 @@
 // console.log(talaba1.talabaHaqidaMalumot());
 // talaba1.talabaKursiniOshirish();
 // console.log(talaba1.talabaHaqidaMalumot());
-// 1. Basic Types
-// a) Quyidagi o'zgaruvchilarni to'g'ri TypeScript turlari bilan e'lon qiling:
-let ism = "Ali";
-let yosh = 25;
-let talabami = true;
-let manzil = "Toshkent";
-// b) Yuqoridagi ma'lumotlardan foydalanib, shaxs haqida ma'lumot chiqaruvchi funksiya yozing
-function shaxsMalumoti(ism, yosh, talabami, manzil) {
-    return `${ism} ${yosh} da. Manzili ${manzil}. Talabami: ${talabami ? 'ha' : 'yoq'}`;
-}
-console.log(shaxsMalumoti('Abduraxmon', 25, true, "Fargona"));
+// // 1. Basic Types
+// // a) Quyidagi o'zgaruvchilarni to'g'ri TypeScript turlari bilan e'lon qiling:
+// let ism: string = "Ali";
+// let yosh: number = 25;
+// let talabami: boolean = true;
+// let manzil: string = "Toshkent";
+// // b) Yuqoridagi ma'lumotlardan foydalanib, shaxs haqida ma'lumot chiqaruvchi funksiya yozing
+// function shaxsMalumoti(ism: string, yosh: number, talabami: boolean, manzil: string): string {
+//     return `${ism} ${yosh} da. Manzili ${manzil}. Talabami: ${talabami ? 'ha' : 'yoq'}`;
+// }
+// console.log(shaxsMalumoti('Abduraxmon', 25, true, "Fargona"));
+// 2. Unions
+// a) Telefon raqamini ifodalovchi o'zgaruvchi yarating. U string yoki number bo'lishi mumkin
+// let telefonRaqam: string | number = "998905305053";
+// b) Quyidagi funksiyani tugallang. U raqam yoki string qabul qilishi va
+// har doim string qaytarishi kerak
+// function stringgaAylantir(qiymat: number | string): string {
+//   return `${qiymat}`;
+// }
+// console.log(stringgaAylantir(12345678));
+// interface Talaba {
+//     ism: string,
+//     yosh: number,
+//     kurs: number,
+//     fanlar: string [],
+// }
+// let talaba1: Talaba = {
+//     ism: "Abduraxmon",
+//     yosh: 25,
+//     kurs: 3,
+//     fanlar: ["Matematika", "Fizika"]
+// }
+// // b) Talaba obyektidan foydalanib, talaba haqida ma'lumot chiqaruvchi funksiya yozing
+// function talabaMalumoti(talaba: { ism: string; yosh: number; kurs: number; fanlar: string[] }): string {
+//     return `Talaba: ${talaba.ism}, yoshi: ${talaba.yosh}, kursi: ${talaba.kurs}, fanlari: ${talaba.fanlar.join(", ")}`;
+// }
+// console.log(talabaMalumoti(talaba1));
+// 4. Interfaces
+// a) Kitob uchun interface yarating. Unda quyidagi xususiyatlar bo'lishi kerak:
+// - sarlavha (string)
+// - muallif (string)
+// - nashrYili (number)
+// - sahifalarSoni (number)
+// interface Kitob {
+//     sarlavha: string,
+//     muallif: string,
+//     nashrYili: number,
+//     sahifalarSoni: number
+// }
+// // b) Kitob interfeysi asosida kamida 2 ta kitob obyektini yarating
+// let kitob1: Kitob ={
+//     sarlavha: "Mehrobdan chayon",
+//     muallif: "Abdulla Qahhor",
+//     nashrYili: 1969,
+//     sahifalarSoni: 150
+// }
+// let kitob2: Kitob ={
+//     sarlavha: "o'tkan kunlar",
+//     muallif: "Abdulla Qodiriy",
+//     nashrYili: 1925,
+//     sahifalarSoni: 300
+// }
+// // c) Kitoblar ro'yxatini qabul qilib, ularning o'rtacha sahifalar sonini hisoblaydigan funksiya yozing
+// function ortachaSahifalarSoni(kitoblar: Kitob[]): number {
+//     let averageSahifa=0
+//     let countKitob=0
+//     kitoblar.forEach(kitob=>{
+//         averageSahifa+=kitob.sahifalarSoni
+//         countKitob+=1
+//     })
+//     averageSahifa=averageSahifa/countKitob
+//     return averageSahifa;
+// }
+// let kitoblar=[kitob1, kitob2];
+// console.log(ortachaSahifalarSoni(kitoblar));
